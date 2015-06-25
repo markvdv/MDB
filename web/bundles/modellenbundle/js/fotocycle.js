@@ -1,0 +1,3 @@
+  $(".modelItemCycle").cycle();
+
+
