@@ -1,0 +1,45 @@
+{%extends 'MDBUserBundle:User:base.html.twig'%}
+{%block title%}USER INDEX{%endblock%}
+{%block content%}
+  <div id="login" class="col-md-12">
+    <h3>Log in met uw accountgegevens.</h3>
+    {%if form is defined%}
+      {{ form_start(form) }}
+      {{form_row(form.nicknaam)}}
+    
+      {%if errors is defined%}
+        {%for error in errors%}
+          {% if error.code==0 %}
+            <div class="error">
+              {{error.message}}
+            </div>
+          {%endif%}
+          {% if error.code==2 %}
+            <div class="error">
+              {{error.message}}
+            </div>
+          {%endif%}
+        {%endfor%}
+      {%endif%}
+      {{form_row(form.paswoord)}}
+      {%if errors is defined%}
+        {%for error in errors%}
+          {% if error.code==1%}
+            <div class="error">
+              {{error.message}}
+            </div>
+          {%endif%}
+          {% if error.code==3%}
+            <div class="error">
+              {{error.message}}
+            </div>
+          {%endif%}
+        {%endfor%}
+      {%endif%}
+      {{form_row(form.login)}}
+      {{form_row(form.registreer)}}
+      {{ form_end(form) }}
+    {%endif%} 
+
+  </div>
+{%endblock%}

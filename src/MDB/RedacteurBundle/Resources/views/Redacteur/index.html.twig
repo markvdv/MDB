@@ -1,0 +1,26 @@
+{%extends 'MDBRedacteurBundle:Redacteur:base.html.twig'%}
+{%block title%}Redacteur Index{%endblock%}
+  {%block styles%}
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../vendor/kartik-v/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../bundles/modellenbundle/css/styles.css">
+  {%endblock%}
+{%block content%}
+    <a href="../logout">LOG UIT</a>
+  <a href="{{path("redacteur_model_search")}}">zoek modellen</a>
+  <a href="{{path("redacteur_unrated")}}">rate modellen</a>
+  {%if countUnrated != "0" %}
+    <div class="unratedModels">
+      Er zijn nog {{countUnrated}} modellen die je een rating moet geven.
+    </div>
+  {%endif%}
+
+
+{%endblock%}{%block scripts%}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="../../bundles/modellenbundle/js/jquery.cycle2.min.js"></script>
+<script src="../../bundles/modellenbundle/js/modellenJS.js"></script>
+<script src="../../../vendor/kartik-v/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
+{%endblock%}

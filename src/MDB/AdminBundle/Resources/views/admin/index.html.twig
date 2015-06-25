@@ -1,0 +1,14 @@
+{%extends 'MDBUserBundle:User:base.html.twig'%}
+{%block title%}USER INDEX{%endblock%}
+{%block content%}
+  {{dump(form)}}
+  {%if form is defined%}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+  {%endif%}
+  {%if errors is defined%}
+    {%for error in errors%}
+      {{error.message}}
+    {%endfor%}
+  {%endif%}
+{%endblock%}

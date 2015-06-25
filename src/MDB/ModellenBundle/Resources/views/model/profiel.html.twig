@@ -1,0 +1,125 @@
+{% extends "MDBModellenBundle:Model:base.html.twig"%}
+{%block title%}Profiel{%endblock%}
+{%block styles%}
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+{%endblock%}
+{%block content%}
+  <ul class="nav nav-tabs" id="taboverzicht">
+    <li class="active"><a data-toggle="tab" href="#persoonlijkeGegevens">persoonlijke gegevens</a></li>
+    <li><a data-toggle="tab" href="#contactInfo">contact info</a></li>
+    <li><a data-toggle="tab" href="#uiterlijkeKenmerken">uiterlijke kenmerken</a></li>
+    <li><a data-toggle="tab" href="#fotoshootOpties">fotoshoot opties</a></li>
+    <li><a data-toggle="tab" href="#magazineOpties">magazine opties</a></li>
+    <li><a data-toggle="tab" href="#extraInfo">ervaring</a></li>
+    <li><a data-toggle="tab" href="#geuploadeFotos">fotos</a></li>
+  </ul>
+  {%if form is defined%}
+
+    <div class="tab-content tab" id="create_form">
+      {# {{form_start(form)}}#}
+      <div role="tabpanel" class="tab-pane fade" id="persoonlijkeGegevens" name="{{modelid}}">
+        {#persoonlijek gegevens#}  
+        <div class="col-md-6">
+          {{form_row(form.geboortedatum)}}
+        </div>
+        <div class="col-md-6">
+          {#adresgegevens#}
+          {{form_label(form.adres)}}
+          {{form_row(form.adres.straatnaam)}}
+          {{form_row(form.adres.huisnummer)}}
+          {{form_row(form.adres.plaatsnaam.plaatsnaam)}}
+          {{form_row(form.adres.plaatsnaam.postcode.postcode)}}
+        </div>
+          <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+          <!--   <button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="contactInfo" name="{{modelid}}">
+        <!-- <h3>Contact Informatie</h3>-->
+        {#contactgegevens#}
+        {{form_row(form.gsm)}}
+        {{form_row(form.website)}}
+        <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+        <!--<button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="uiterlijkeKenmerken" name="{{modelid}}">
+        <!--  <h3>Uiterlijke Kenmerken</h3>-->
+        {#uiterlijke kenmerken#}
+        {{form_row(form.haarkleur)}}
+        {{form_row(form.oogkleur)}}
+        {{form_row(form.lengte)}}
+        {{form_row(form.gewicht)}}
+        {{form_row(form.confectiemaat)}}
+        {{form_row(form.cupmaat)}}
+        {{form_row(form.borstomtrek)}}
+        {{form_row(form.taille)}}
+        {{form_row(form.heup)}}
+        {{form_row(form.schoenmaat)}}
+        <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+        <!--<button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="fotoshootOpties" name="{{modelid}}">
+        <!--  <h3>In welke soorten fotografie bent u geinteresseerd?</h3>-->
+        {{form_row(form.fashion)}}
+        {{form_row(form.lingerie)}}
+        {{form_row(form.badkledij)}}
+        {{form_row(form.glamour)}}
+        {{form_row(form.topless)}}
+        {{form_row(form.bedektTopless)}}
+        {{form_row(form.naakt)}}
+        {{form_row(form.bedektNaakt)}}
+        {{form_row(form.onherkenbaarNaakt)}}
+        {{form_row(form.artistiekNaakt)}}
+        {{form_row(form.bodypaint)}}
+        <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+        <!-- <button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+      </div>
+      <div role="tabpanel" class="tab-pane fade active" id="magazineOpties" name="{{modelid}}">
+        <!-- <h3>In welke magazines ben u geinteresseerd?</h3>-->
+        {{form_row(form.pmagazine)}}
+        {{form_row(form.che)}}
+        {{form_row(form.menzo)}}
+        {{form_row(form.clint)}}
+        {{form_row(form.andereMagazines)}}
+        {{form_row(form.andereMagazinesOmschrijving)}}
+        <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+        <!--   <button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="extraInfo" name="{{modelid}}">
+        <!--  <h3>Heeft u al ervaring?</h3>-->
+        {##ervaring en fotos#}
+        {{form_row(form.ervaring)}}
+        {{form_row(form.ervaringOmschrijving)}}
+        <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+        <!--  <button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+      </div>
+      {%if fotos is defined%}
+        <div role="tabpanel" class="tab-pane fade" id="geuploadeFotos" name="{{modelid}}">
+          <!--  <h3>Reeds Geuploade Fotos</h3>-->
+          <div class="imgHolder modelItemCycle">
+            {%for foto in fotos%}
+              <img src="../../uploads/documents/{{foto.path}}">
+            {%endfor%}
+          </div>
+          <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+          <!--    <button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>-->
+        </div>
+      {%endif%}
+    </div>
+   {# {% do form.paswoord.setRendered %}
+    {% do form.fotos.setRendered %}
+   #}
+    {% do form.creeerprofiel.setRendered %}
+    {{ form_row(form.updateprofiel)}}
+      {{form_end(form)}}
+  {%endif%}
+{%endblock%}
+{%block scripts%}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="../../bundles/modellenbundle/js/jquery.cycle2.min.js"></script>
+  <script src="../../bundles/modellenbundle/js/fotocycle.js"></script>
+  <script src="../../bundles/modellenbundle/js/modelProfiel.js"></script>
+  <script type="text/javascript">
+    $('#taboverzicht a:eq(0)').tab()
+  </script>
+{%endblock%}

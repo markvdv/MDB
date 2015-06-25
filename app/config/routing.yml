@@ -1,0 +1,26 @@
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+mdb_redacteur:
+    resource: "@MDBRedacteurBundle/Controller/"
+    type:     annotation
+    prefix:   /redacteur
+
+mdb_admin:
+    resource: "@MDBAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+    
+mdb_model:
+    resource: "@MDBModellenBundle/Controller/"
+    type:     annotation
+    prefix:   /model
+
+mdb_user:
+    resource: "@MDBUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+app_bundle: 
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /

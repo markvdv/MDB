@@ -1,0 +1,49 @@
+{%extends "MDBModellenBundle:Model:base.html.twig"%}
+{%block title%}AdminPaneel{%endblock%}
+{%block content %}
+  {# overzicht van de redacteurs#}
+  <div id="geregistreerderedacteurs">
+
+    <h3>Geregistreerde Redacteurs</h3>
+    <button id="redacteurDropdown">dropdown</button>
+    <div id="redacteursExpandable">
+      {%for redacteur in redacteurs%}
+        <div class="redacteurItem" id="{{redacteur.id}}">
+           <button class="imgHolder deleteRedacteurButton" ><img src="../../bundles/modellenbundle/img/delete.png"></button>
+          <button class="imgHolder editRedacteurButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+          <button class="imgHolder saveRedacteurButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>
+          <label>Naam</label><div class="naam"><span>{{redacteur.naam}}, {{redacteur.voornaam}}</span></div>
+        <label>Nicknaam</label><div class="nicknaam">{{redacteur.nicknaam}}</div>
+        <label>Email</label><div class="email">{{redacteur.email}}</div>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+  {# overzicht van de modellen#}
+  <div id="geregistreerdeModellen">
+    <h3>Geregistreerde Modellen</h3>
+    <button id="modelDropdown">dropdown</button>
+    <div id="modellenExpandable">
+      {%for model in modellen%}
+        <div class="modelItem" id="{{model.id}}">
+          <!--delete button-->
+          
+          <button class="imgHolder deleteModelButton" ><img src="../../bundles/modellenbundle/img/delete.png"></button>
+          <button class="imgHolder editModelButton"><img src="../../bundles/modellenbundle/img/edit.png"></button>
+          <button class="imgHolder saveModelButton" style="display:none"><img src="../../bundles/modellenbundle/img/save.png"></button>
+          <input class="naam" value="{{model.username}}" disabled>
+          <div class="rating">RATING {{model.totaalRating}}</div>
+          <div class="modelItemCycle imgHolder">
+            {% for foto in model.fotos%}
+              <img alt="{{foto.naam}}" title="{{foto.naam}}" src="../../uploads/documents/{{foto.path}}">
+            {%endfor%}
+          </div>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+
+{%endblock%}
+{%block scripts%}
+  <script src="../../bundles/modellenbundle/js/adminpaneel.js"></script>
+{%endblock%}

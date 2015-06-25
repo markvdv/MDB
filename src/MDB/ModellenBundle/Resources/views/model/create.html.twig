@@ -1,0 +1,103 @@
+{%extends 'MDBModellenBundle:Model:base.html.twig'%}
+{%block title%}Model creatie{%endblock%}
+{%block content%}
+  <ul class="nav nav-tabs" id="taboverzicht">
+    <li class="active"><a data-toggle="tab" href="#persoonlijkeGegevens">persoonlijke gegevens</a></li>
+    <li><a data-toggle="tab" href="#contactInfo">contact info</a></li>
+    <li><a data-toggle="tab" href="#uiterlijkeKenmerken">uiterlijke kenmerken</a></li>
+    <li><a data-toggle="tab" href="#fotoshootOpties">fotoshoot opties</a></li>
+    <li><a data-toggle="tab" href="#magazineOpties">magazine opties</a></li>
+    <li><a data-toggle="tab" href="#extraInfo">ervaring</a></li>
+    <li><a data-toggle="tab" href="#fotoUpload">fotos</a></li>
+  </ul>
+  {%if form is defined%}
+
+    {{form_start(form)}}
+    <div class="tab-content tab" id="create_form">
+      <div role="tabpanel" class="tab-pane fade active" id="persoonlijkeGegevens">
+        <div class="col-md-6">
+          {#persoonlijek gegevens#}    
+        </div>
+        <div class="col-md-6">
+          {#adresgegevens#}
+          {{form_label(form.adres.straatnaam)}}
+          {{form_widget(form.adres.straatnaam)}}
+          {{form_label(form.adres.huisnummer)}}
+          {{form_widget(form.adres.huisnummer)}}
+          {{form_label(form.adres.plaatsnaam.plaatsnaam)}}
+          {{form_widget(form.adres.plaatsnaam.plaatsnaam)}}
+          {{form_label(form.adres.plaatsnaam.postcode.postcode)}}
+          {{form_widget(form.adres.plaatsnaam.postcode.postcode)}}
+          {{form_widget(form.geboortedatum)}}
+          
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="contactInfo">
+        {#contactgegevens#}
+        {{form_row(form.gsm)}}
+        {#{{form_row(form.email)}}#}
+        {{form_row(form.website)}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="uiterlijkeKenmerken" >
+        {#uiterlijke kenmerken#}
+        {{form_row(form.haarkleur)}}
+        {{form_row(form.oogkleur)}}
+        {{form_row(form.lengte)}}
+        {{form_row(form.gewicht)}}
+        {{form_row(form.confectiemaat)}}
+        {{form_row(form.cupmaat)}}
+        {{form_row(form.borstomtrek)}}
+        {{form_row(form.taille)}}
+        {{form_row(form.heup)}}
+        {{form_row(form.schoenmaat)}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="fotoshootOpties" >
+        {{form_row(form.fashion)}}
+        {{form_row(form.lingerie)}}
+        {{form_row(form.badkledij)}}
+        {{form_row(form.glamour)}}
+        {{form_row(form.topless)}}
+        {{form_row(form.bedektTopless)}}
+        {{form_row(form.naakt)}}
+        {{form_row(form.bedektNaakt)}}
+        {{form_row(form.onherkenbaarNaakt)}}
+        {{form_row(form.artistiekNaakt)}}
+        {{form_row(form.bodypaint)}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="magazineOpties" >
+        <div id="magazineOpties">
+          {{form_row(form.pmagazine)}}
+          {{form_row(form.che)}}
+          {{form_row(form.menzo)}}
+          {{form_row(form.clint)}}
+        </div>
+        <div id="andereMagazines">
+          {{form_row(form.andereMagazines)}}
+          {{form_row(form.andereMagazinesOmschrijving)}}
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade"  id="extraInfo">
+        {##ervaring en fotos#}
+        {{form_row(form.ervaring)}}
+        {{form_row(form.ervaringOmschrijving)}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade"  id="fotoUpload">
+        {{form_row(form.fotos)}}
+        {{form_row(form.creeerprofiel)}}
+      </div>
+    </div> 
+    {% do form.updateprofiel.setRendered %}
+   {# {% do form.veranderprofiel.setRendered %}
+    {% do form.wachtwoordvergeten.setRendered %}#}
+    {{form_end(form)}}
+  {%endif%}
+
+  {%if errors is defined%}
+    {%for error in errors%}
+      {{error.message}}
+    {%endfor%}
+  {%endif%}
+{%endblock%}
+{%block scripts%}
+
+{%endblock%}

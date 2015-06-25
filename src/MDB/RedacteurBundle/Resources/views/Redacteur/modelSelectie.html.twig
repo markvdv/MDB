@@ -1,0 +1,111 @@
+{%extends 'MDBRedacteurBundle:Redacteur:base.html.twig'%}
+{%block title%}Model Selectie{%endblock%}
+  {%block styles%}
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../vendor/kartik-v/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../bundles/modellenbundle/css/styles.css">
+  {%endblock%}
+{%block content%}
+   <a href="../logout">LOG UIT</a>
+   <H1>UNRATED MODELLEN KOMEN NIET VOOR IN DE ZOEKRESULTATEN</H1>
+  {%if form is defined%}
+    {#uiterlijke kenmerken#}
+    <h3>Voor welke magazines?</h3>
+    <div id="magazineOpties">
+      {{form_widget(form.pmagazine)}}
+      {{form_label(form.pmagazine)}}
+      {{form_widget(form.clint)}}
+      {{form_label(form.clint)}}
+      {{form_widget(form.che)}}
+      {{form_label(form.che)}}
+      {{form_widget(form.menzo)}}
+      {{form_label(form.menzo)}}
+    </div>
+    <div id="andereMagazines">
+      {{form_widget(form.andereMagazines)}}
+      {{form_label(form.andereMagazines)}}
+      {{form_row(form.andereMagazinesZoekterm)}}
+    </div>
+
+
+    <div id="uiterlijkeKenmerkenOpties">
+      <h3>Uiterlijke kenmerken?</h3>
+      {{form_row(form.haarKleur)}}
+      {{form_row(form.oogKleur)}}
+      {{form_row(form.confectieMaat)}}
+      {{form_row(form.cupMaat)}}
+      {{form_label(form.lengte)}}
+      <div id="lengteSlider"></div>
+      <label id="minlengte" for="for" value="value">150</label>
+      <label id="maxlengte" for="for" value="value">200</label>
+      {#{{form_widget(form.lengte)}}#}
+      <div></div>  
+      {{form_label(form.gewicht)}}
+      <div id="gewichtSlider"></div>
+      <label id="mingewicht" for="for" value="value">50</label>
+      <label id="maxgewicht" for="for" value="value">100</label>
+      <div></div>
+      {{form_label(form.borstOmtrek)}}
+      <div id="borstomtrekSlider"></div>
+      <label id="minborstomtrek" for="for" value="value">40</label>
+      <label id="maxborstomtrek" for="for" value="value">90</label>
+      <div></div>  
+      {{form_label(form.taille)}}
+      <div id="tailleSlider"></div>
+      <label id="mintaille" for="for" value="value">40</label>
+      <label id="maxtaille" for="for" value="value">90</label>
+      <div></div> 
+      {{form_label(form.heup)}}
+      <div id="heupSlider"></div>
+      <label id="minheup" for="for" value="value">40</label>
+      <label id="maxheup" for="for" value="value">90</label>
+      <div></div>
+      {{form_label(form.schoenMaat)}}
+      <div id="schoenmaatSlider"></div>
+      <label id="minschoenmaat" for="for" value="value">25</label>
+      <label id="maxschoenmaat" for="for" value="value">60</label>
+    </div>
+    <div id="fotoshootOpties">
+      <h3>Fotoshoot opties?</h3>
+      {{form_row(form.fashion)}}
+      {{form_row(form.lingerie)}}
+      {{form_row(form.badKledij)}}
+      {{form_row(form.glamour)}}
+      {{form_row(form.topLess)}}
+      {{form_row(form.bedektTopless)}}
+      {{form_row(form.naakt)}}
+      {{form_row(form.bedektNaakt)}}
+      {{form_row(form.onherkenbaarNaakt)}}
+      {{form_row(form.artistiekNaakt)}}
+      {{form_row(form.bodyPaint)}}
+    </div>
+    {##ervaring en fotos#}
+    <h3>Ervaring vereist?</h3>
+    {{form_row(form.ervaring)}}
+    <h3>Minimum rating</h3>
+    <div class="rating">  {{form_widget(form.rating.ratingNumber)}}</div>
+  
+     {% do form.rating.ratingSubmit.setRendered %}
+    {{form_row(form.zoek)}}
+
+
+  {%endif%}
+
+  {%if errors is defined%}
+    {%for error in errors%}
+      {{error.message}}
+    {%endfor%}
+  {%endif%}
+  <div id="modellenOverzicht">
+
+  </div>
+  <div id="loadingGif"><img alt="loading" src="../../bundles/modellenbundle/img/dancingGirl.gif"></div>
+  {%endblock%}
+{%block scripts%}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="../../bundles/modellenbundle/js/jquery.cycle2.min.js"></script>
+<script src="../../bundles/modellenbundle/js/modellenJS.js"></script>
+<script src="../../../vendor/kartik-v/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
+{%endblock%}
